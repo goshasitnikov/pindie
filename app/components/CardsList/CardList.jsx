@@ -1,4 +1,4 @@
-import { Card } from '../Card/Card'
+import { Card } from '@/app/components/Card/Card'
 
 import Styles from './CardsList.module.css'
 

@@ -3,9 +3,9 @@ import { useState } from 'react'
 
 import Styles from './Header.module.css'
 
-import { Popup } from '../Popup/Popup';
-import { Overlay } from '../Overlay/Overlay';
-import { AuthForm } from '../AuthForm/AuthForm';
+import { Popup } from '@/app/components/Popup/Popup';
+import { Overlay } from '@/app/components/Overlay/Overlay';
+import { AuthForm } from '@/app/components/AuthForm/AuthForm';
 
 export const Header = () => {
 

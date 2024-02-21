@@ -1,4 +1,4 @@
-import { data } from './data.js'
+import { data } from '@/app/data/data'
 
 export const getGamesByCategory = (category) => {
     return data.filter((game) => {

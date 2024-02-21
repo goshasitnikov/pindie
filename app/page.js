@@ -1,7 +1,7 @@
-import {getGamesByCategory} from './data/data-utils.js'
-import { Banner } from './components/Banner/Banner.jsx';
-import { CardList } from "./components/CardsList/CardList.jsx";
-import { Promo } from './components/Promo/Promo.jsx';
+import { getGamesByCategory } from '@/app/data/data-utils.js'
+import { Banner } from '@/app/components/Banner/Banner.jsx';
+import { CardList } from "@/app/components/CardsList/CardList.jsx";
+import { Promo } from '@/app/components/Promo/Promo';
 
 export default function Home() {
   const popularGames = getGamesByCategory("popular");
@@ -10,7 +10,7 @@ export default function Home() {
     <main className="main">
       <Banner />
       <CardList id='popular' title='Популярные' data={popularGames} />
-      <CardList id='new' title='Новинки' data={popularGames} />
+      <CardList id='new' title='Новинки' data={newGames} />
       <Promo />
     </main >
   );
