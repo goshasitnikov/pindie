@@ -7,11 +7,9 @@ import Styles from './Promo.module.css'
 export const Promo = () => {
 
     const [codeIsVisible, setCodeIsVisible] = useState(false);
-
+    
     const handleButtonClick = () => {
-        if (codeIsVisible === false) {
-            setCodeIsVisible(true);
-        }
+        setCodeIsVisible(!codeIsVisible)
     };
 
     useEffect(() => {
