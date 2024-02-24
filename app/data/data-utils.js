@@ -6,4 +6,8 @@ export const getGamesByCategory = (category) => {
             return item.name === category;
         });
     });
-}
+};
+
+export const getGameByID = (id) => {
+    return data.find((game) => game.id === Number(id));
+};
