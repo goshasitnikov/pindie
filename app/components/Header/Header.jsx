@@ -89,12 +89,21 @@ export const Header = () => {
                     </button>
                 </div>
             </nav>
-            {popupIsOpened && <Overlay isOpened={popupIsOpened} closePopup={closePopup} />}
             {popupIsOpened && (
-                <Popup isOpened={popupIsOpened} closePopup={closePopup}>
-                    <AuthForm />
-                </Popup>
+                <>
+                    <Overlay isOpened={popupIsOpened} closePopup={closePopup} />
+                    <Popup isOpened={popupIsOpened} closePopup={closePopup}>
+                        <AuthForm />
+                    </Popup>
+                </>
             )}
         </header>
     );
 };
+
+
+
+// { <Overlay isOpened={popupIsOpened} closePopup={closePopup} />
+// <Popup isOpened={popupIsOpened} closePopup={closePopup}>
+//     <AuthForm />
+// </Popup> }
