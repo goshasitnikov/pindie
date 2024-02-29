@@ -22,11 +22,16 @@ export const Header = () => {
         setPopupIsOpened(false);
     };
 
-    const pathname = usePathname();
+    const pathname = usePathname;
 
     return (
         <header className={Styles['header']}>
-            <Link href="./index.html" className={Styles['logo']}>
+            <Link href="/"
+                className={Styles.logo}
+                Style={pathname == "/" ? "pointer-events: none" : ""}
+                aria-disabled={pathname == "/"}
+                tabIndex={pathname == "/" ? -1 : undefined}
+            >
                 <img
                     className={Styles['logo__image']}
                     src="/images/logo.svg"
@@ -93,6 +98,6 @@ export const Header = () => {
             <Popup isOpened={popupIsOpened} closePopup={closePopup} >
                 <AuthForm />
             </Popup>
-        </header>
+        </header >
     );
 };

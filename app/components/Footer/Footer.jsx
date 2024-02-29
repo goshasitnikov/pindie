@@ -1,11 +1,25 @@
+'use client'
+import { usePathname } from "next/navigation";
+
 import Styles from "./Footer.module.css";
 
 import Link from 'next/link';
 
+
+
 export const Footer = () => {
+
+  const pathname = usePathname();
+
+
   return (
     <footer className={Styles["footer"]}>
-      <Link href="./index.html" className={Styles["logo"]}>
+      <Link href="/"
+        className={Styles.logo}
+        Style={pathname == "/" ? "pointer-events: none" : ""}
+        aria-disabled={pathname == "/"}
+        tabIndex={pathname == "/" ? -1 : undefined}
+      >
         <span className={Styles["logo-name"]}>pindie</span>
         <span className={Styles["logo-copy"]}>, XXI век</span>
       </Link>
