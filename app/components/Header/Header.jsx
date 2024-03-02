@@ -22,35 +22,40 @@ export const Header = () => {
         setPopupIsOpened(false);
     };
 
-    const pathname = usePathname;
+    const pathname = usePathname();
 
     return (
         <header className={Styles['header']}>
-            <Link href="/"
-                className={Styles.logo}
-                Style={pathname == "/" ? "pointer-events: none" : ""}
-                aria-disabled={pathname == "/"}
-                tabIndex={pathname == "/" ? -1 : undefined}
-            >
-                <img
-                    className={Styles['logo__image']}
-                    src="/images/logo.svg"
-                    alt="Логотип Pindie" />
-            </Link>
+            <div className={Styles['logo']}>
+                {
+                    pathname === "/" ?
+                        <img
+                            className={Styles['logo__image']}
+                            src="/images/logo.svg"
+                            alt="Логотип Pindie" />
+                        :
+                        <Link href='/'>
+                            <img
+                                className={Styles['logo__image']}
+                                src="/images/logo.svg"
+                                alt="Логотип Pindie" />
+                        </Link>
+                }
+            </div>
             <nav className={Styles['menu']}>
                 <ul className={Styles['menu__list']}>
                     <li className={Styles['menu__item']}>
                         <Link
                             href="/new"
-                            className={`${Styles["menu__link"]} ${pathname === "/new" ? Styles["menu__link_active"] : ""
-                                }`}>
+                            className={`${Styles["menu__link"]}  ${pathname == "/new" ? Styles["menu__link_active"] : ""
+                                } `}>
                             Новинки
                         </Link>
                     </li>
                     <li className={Styles['menu__item']}>
                         <Link
                             href="/popular"
-                            className={`${Styles["menu__link"]} ${pathname === "/popular" ? Styles["menu__link_active"] : ""
+                            className={`${Styles["menu__link"]} ${pathname == "/popular" ? Styles["menu__link_active"] : ""
                                 }`}>
                             Популярные
                         </Link>
@@ -58,7 +63,7 @@ export const Header = () => {
                     <li className={Styles['menu__item']}>
                         <Link
                             href="/shooters"
-                            className={`${Styles["menu__link"]} ${pathname === "/shooters" ? Styles["menu__link_active"] : ""
+                            className={`${Styles["menu__link"]} ${pathname == "/shooters" ? Styles["menu__link_active"] : ""
                                 }`}>
                             Шутеры
                         </Link>
@@ -66,7 +71,7 @@ export const Header = () => {
                     <li className={Styles['menu__item']}>
                         <Link
                             href="/runners"
-                            className={`${Styles["menu__link"]} ${pathname === "/runners" ? Styles["menu__link_active"] : ""
+                            className={`${Styles["menu__link"]} ${pathname == "/runners" ? Styles["menu__link_active"] : ""
                                 }`}>
                             Ранеры
                         </Link>
@@ -74,7 +79,7 @@ export const Header = () => {
                     <li className={Styles['menu__item']}>
                         <Link
                             href="/pixel-games"
-                            className={`${Styles["menu__link"]} ${pathname === "/pixel-games" ? Styles["menu__link_active"] : ""
+                            className={`${Styles["menu__link"]} ${pathname == "/pixel-games" ? Styles["menu__link_active"] : ""
                                 }`}>
                             Пиксельные
                         </Link>
@@ -82,7 +87,7 @@ export const Header = () => {
                     <li className={Styles['menu__item']}>
                         <Link
                             href="/tds"
-                            className={`${Styles["menu__link"]} ${pathname === "/tds" ? Styles["menu__link_active"] : ""
+                            className={`${Styles["menu__link"]} ${pathname == "/tds" ? Styles["menu__link_active"] : ""
                                 }`}>
                             TDS
                         </Link>

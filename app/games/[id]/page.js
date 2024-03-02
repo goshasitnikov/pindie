@@ -31,7 +31,7 @@ export default function GamePage(props) {
           </div>
           <div className={Styles["about__vote"]}>
             <p className={Styles["about__vote-amount"]}>За игру уже проголосовали: <span className={Styles["about__accent"]}>{game.users.length}</span></p>
-            <button onClick={() => router.push('/vote', {scroll: false})} className={`button ${Styles["about__vote-button"]}`}>Голосовать</button>
+            <button onClick={() => router.push('/login', {scroll: false})} className={`button ${Styles["about__vote-button"]}`}>Голосовать</button>
           </div>
         </section>
       </>
