@@ -21,11 +21,10 @@ export const CardList = (props) => {
                   {...item}
                 />
               </Link>
-
             </li>
-          );
-        })};
+          )
+        })}
       </ul>
     </section>
-  );
+  )
 };

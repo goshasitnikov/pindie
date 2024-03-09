@@ -16,7 +16,7 @@ export const Footer = () => {
     <footer className={Styles["footer"]}>
       <Link href="/"
         className={Styles.logo}
-        Style={pathname == "/" ? "pointer-events: none" : ""}
+        Style={pathname === "/" ? "pointer-events: none" : ""} //
         aria-disabled={pathname == "/"}
         tabIndex={pathname == "/" ? -1 : undefined}
       >
@@ -40,6 +40,6 @@ export const Footer = () => {
           </a>
         </li>
       </ul>
-    </footer>
+    </footer >
   );
 };
