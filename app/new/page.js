@@ -10,8 +10,8 @@ export default async function New() {
     )
 
     return (
-        < main className="main-inner">
-            <CardList id="new" title="Популярные" data={newGames} />
+        <main className="main-inner">
+            <CardList id="new" title="Новинки" data={newGames} />
         </main>
     )
 }

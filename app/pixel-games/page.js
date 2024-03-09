@@ -1,9 +1,14 @@
-import { getGamesByCategory } from '@/app/data/data-utils'
-import { CardList } from '@/app/components/CardsList/CardList'
+import {getNormalizedGamesDataByCategory} from "@/app/api/api-utils";
+import {endpoints} from "@/app/api/config";
+import {CardList} from "@/app/components/CardsList/CardList";
 
-export default function PixelGames() {
 
-    const pixelGames = getGamesByCategory('pixel')
+export default async function PixelGames() {
+
+   const newGames = await getNormalizedGamesDataByCategory(
+        endpoints.games,
+        'pixel'
+    )
 
     return (
         <main className={'main-inner'}>

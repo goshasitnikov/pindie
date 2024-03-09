@@ -1,9 +1,13 @@
-import { getGamesByCategory } from '@/app/data/data-utils'
 import { CardList } from '@/app/components/CardsList/CardList'
+import {getNormalizedGamesDataByCategory} from "@/app/api/api-utils";
+import {endpoints} from "@/app/api/config";
 
 export default function TDS() {
 
-    const tdsGames = getGamesByCategory('TDS')
+   const newGames = await getNormalizedGamesDataByCategory(
+        endpoints.games,
+        'TDS'
+    )
 
     return (
         <main className={'main-inner'}>
