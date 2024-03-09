@@ -2,7 +2,7 @@ import { CardList } from '@/app/components/CardsList/CardList'
 import {getNormalizedGamesDataByCategory} from "@/app/api/api-utils";
 import {endpoints} from "@/app/api/config";
 
-export default function TDS() {
+export default async function TDS() {
 
    const newGames = await getNormalizedGamesDataByCategory(
         endpoints.games,
