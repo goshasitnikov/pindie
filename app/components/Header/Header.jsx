@@ -1,6 +1,10 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { usePathname } from "next/navigation";
+import { useContext } from "react";
+
+import { AuthContext } from "@/app/context/app-context";
+import { useStore } from "@/app/store/app-store";
 
 import Link from 'next/link';
 
@@ -10,14 +14,11 @@ import { Popup } from '@/app/components/Popup/Popup';
 import { Overlay } from '@/app/components/Overlay/Overlay';
 import { AuthForm } from '@/app/components/AuthForm/AuthForm';
 
-import {endpoints} from "@/app/api/config";
-import {getJWT, getMe, removeJWT, isResponseOk} from "@/app/api/api-utils";
-
 export const Header = () => {
 
-    const [isAuthorized, setIsAuthorized] = useState(false);
-    const [popupIsOpened, setPopupIsOpened] = useState(false);
+    const [popupIsOpened, setPopupIsOpened] = useState(false)
 
+    const authContext = useStore();
     const openPopup = () => {
         setPopupIsOpened(true);
     };
@@ -27,24 +28,11 @@ export const Header = () => {
 
     const pathname = usePathname();
 
-    useEffect(()=> {
-        const jwt = getJWT();
-        if (jwt) {
-            getMe(endpoints.me, jwt).then((userData) => {
-                if(isResponseOk(userData)) {
-                    setIsAuthorized(true)
-                } else {
-                        setIsAuthorized(false)
-                        removeJWT()
-                    }
-            })
-        }
-    }, [])
 
-    const handleLogout = () => {
-        setIsAuthorized(false);
-        removeJWT();
-    }
+  const handleLogout = () => {
+    authContext.logout(); // Используем метод logout из хранилища
+  };
+
 
     return (
         <header className={Styles['header']}>
@@ -116,20 +104,20 @@ export const Header = () => {
                     </li>
                 </ul>
                 <div className={Styles["auth"]}>
-                    {isAuthorized ? (
-                        <button className={Styles["auth__button"]} onClick={handleLogout}>
-                            Выйти
-                        </button>
-                        ) : (
-                            <button className={Styles["auth__button"]} onClick={openPopup}>
-                                Войти
-                            </button>
-                        )}
+                   {authContext.isAuth ? (
+    <button className={Styles["auth__button"]} onClick={handleLogout}>
+      Выйти
+    </button>
+    ) : (
+    <button className={Styles["auth__button"]} onClick={openPopup}>
+      Войти
+    </button>
+  )}
                 </div>
             </nav>
             <Overlay isOpened={popupIsOpened} closePopup={closePopup}/>
             <Popup isOpened={popupIsOpened} closePopup={closePopup}>
-                <AuthForm close={closePopup} setAuth={setIsAuthorized} />
+                <AuthForm close={closePopup} />
             </Popup>
         </header >
     );

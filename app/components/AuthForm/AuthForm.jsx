@@ -1,50 +1,44 @@
 'use client'
 import { useState, useEffect } from 'react';
+import { useStore } from "@/app/store/app-store";
 
-import { isResponseOk, authorize, getMe, setJWT } from '@/app/api/api-utils';
+import { isResponseOk, authorize } from '@/app/api/api-utils';
 import { endpoints } from '@/app/api/config'
 
 import Styles from './AuthForm.module.css';
 
 export const AuthForm = (props) => {
 
-  const [authData, setAuthData] = useState({ identifier: "", password: "" });
-  const [userData, setUserData] = useState(null);
-  const [message, setMessage] = useState({ status: null, text: null });
+const authContext = useStore()
 
-  useEffect(() => {
-    authorize(endpoints.auth, { identifier: 'aski@example.com', password: 'ilovehtml' })
-      .then(res => console.log(res))
-  }, [])
+  const [authData, setAuthData] = useState({ identifier: "", password: "" });
+  const [message, setMessage] = useState({ status: null, text: null });
 
   const handleInput = (e) => {
     setAuthData({ ...authData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const userData = await authorize(endpoints.auth, authData);
-    if (isResponseOk(userData)) {
-      await getMe(endpoints.me, userData.jwt)
-      setUserData(userData);
-      setJWT(userData.jwt);
-      props.setAuth(true);
-      setMessage({ status: "success", text: "Вы авторизовались!" });
-    } else {
-      setMessage({ status: "error", text: "Неверные почта или пароль" });
-    }
-  };
+  e.preventDefault();
+  const userData = await authorize(endpoints.auth, authData);
+  if(isResponseOk(userData)) {
+    authContext.login(userData.user, userData.jwt);
+    setMessage({ status: "success", text: "Вы авторизовались!" });
+  } else {
+    setMessage({ status: "error", text: "Неверные почта или пароль" });
+  }
+};
 
-  useEffect(() => {
-    let timer;
-    if (userData) {
-      timer = setTimeout(() => {
-        /* В props close лежит функция закрытия попапа */
-        props.close();
-      }, 1000);
-    }
-    return () => clearTimeout(timer);
-  }, [userData]);
+useEffect(() => {
+  let timer;
+  if(authContext.user) {
+    timer = setTimeout(() => {
+      setMessage({ status: null, text: null});
+      props.close();
+    }, 1000);
+  }
+  return () => clearTimeout(timer);
+}, [authContext.user]);
 
   return (
     <form onSubmit={handleSubmit} className={Styles['form']}>

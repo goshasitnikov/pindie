@@ -1,21 +1,21 @@
-import { Header } from '@/app/components/Header/Header';
-import { Footer } from '@/app/components/Footer/Footer';
 import './globals.css';
+
+import {App} from "@/app/App";
 
 
 export const metadata = {
   title: 'Pindie',
-  description: 'Портал инди-игр от студентов Яндекс Практикума',
+  description: 'Портал инди-игр от студентов Яндекс Практикума',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="ru">
-      <body>
-        <Header />
+    <body>
+    <App>
         {children}
-        <Footer />
-      </body>
+    </App>
+    </body>
     </html>
   );
 };

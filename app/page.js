@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { getGamesByCategory } from '@/app/data/data-utils.js'
 import { Banner } from '@/app/components/Banner/Banner.jsx';
-import { CardList } from "@/app/components/CardsList/CardList.jsx";
+import { CardsList } from "@/app/components/CardsList/CardsList.jsx";
 import { Promo } from '@/app/components/Promo/Promo';
 
 
@@ -30,8 +30,8 @@ export default function Home() {
   return (
     <main className="main">
       <Banner />
-      <CardList id='popular' title='Популярные' data={popularGames} />
-      <CardList id='new' title='Новинки' data={newGames} />
+      <CardsList id='popular' title='Популярные' data={popularGames} />
+      <CardsList id='new' title='Новинки' data={newGames} />
       <Promo />
     </main >
   );

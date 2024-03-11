@@ -5,7 +5,7 @@ import Styles from './CardsList.module.css'
 import Link from 'next/link';
 
 
-export const CardList = (props) => {
+export const CardsList = (props) => {
 
   return (
     <section className={Styles["list-section"]}>
