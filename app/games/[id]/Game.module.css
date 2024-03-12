@@ -61,13 +61,13 @@
   letter-spacing: 6%;
 }
 
- .about__vote-button:disabled {
-   opacity: 0.5;
-   pointer-events: none;
- }
+.about__vote-button:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
 
 
-@media (width <= 1200px) {
+@media (width <=1200px) {
   .game {
     padding: 72px 32px;
   }
@@ -77,7 +77,7 @@
   }
 }
 
-@media (width <= 768px) {
+@media (width <=768px) {
   .game {
     padding: 40px 16px;
   }

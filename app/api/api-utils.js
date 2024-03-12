@@ -1,7 +1,3 @@
-// import { BASE_URL } from "./config";
-
-// const url = BASE_URL
-
 export const isResponseOk = (response) => {
     return !(response instanceof Error);
 };
@@ -91,23 +87,23 @@ export const removeJWT = () => {
 };
 
 export const vote = async (url, jwt, usersArray) => {
-  try {
-    const response = await fetch(url, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${jwt}`,
-      },
-      body: JSON.stringify({ users_permissions_users: usersArray }),
-    })
-    if (response.status !== 200) {
-      throw new Error('Ошибка голосования')
+    try {
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${jwt}`,
+            },
+            body: JSON.stringify({ users_permissions_users: usersArray }),
+        })
+        if (response.status !== 200) {
+            throw new Error('Ошибка голосования')
+        }
+        const result = await response.json()
+        return result
+    } catch (error) {
+        return error
     }
-    const result = await response.json()
-    return result
-  } catch (error) {
-    return error
-  }
 }
 
 export const checkIfUserVoted = (game, userId) => {

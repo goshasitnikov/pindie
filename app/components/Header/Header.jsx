@@ -1,12 +1,9 @@
 'use client'
 import { useState } from 'react'
 import { usePathname } from "next/navigation";
-import { useContext } from "react";
-
-import { AuthContext } from "@/app/context/app-context";
-import { useStore } from "@/app/store/app-store";
-
 import Link from 'next/link';
+
+import { useStore } from "@/app/store/app-store";
 
 import Styles from './Header.module.css'
 
@@ -29,9 +26,9 @@ export const Header = () => {
     const pathname = usePathname();
 
 
-  const handleLogout = () => {
-    authContext.logout(); // Используем метод logout из хранилища
-  };
+    const handleLogout = () => {
+        authContext.logout();
+    };
 
 
     return (
@@ -104,18 +101,18 @@ export const Header = () => {
                     </li>
                 </ul>
                 <div className={Styles["auth"]}>
-                   {authContext.isAuth ? (
-    <button className={Styles["auth__button"]} onClick={handleLogout}>
-      Выйти
-    </button>
-    ) : (
-    <button className={Styles["auth__button"]} onClick={openPopup}>
-      Войти
-    </button>
-  )}
+                    {authContext.isAuth ? (
+                        <button className={Styles["auth__button"]} onClick={handleLogout}>
+                            Выйти
+                        </button>
+                    ) : (
+                        <button className={Styles["auth__button"]} onClick={openPopup}>
+                            Войти
+                        </button>
+                    )}
                 </div>
             </nav>
-            <Overlay isOpened={popupIsOpened} closePopup={closePopup}/>
+            <Overlay isOpened={popupIsOpened} closePopup={closePopup} />
             <Popup isOpened={popupIsOpened} closePopup={closePopup}>
                 <AuthForm close={closePopup} />
             </Popup>
