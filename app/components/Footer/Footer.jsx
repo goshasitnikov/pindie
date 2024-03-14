@@ -15,10 +15,10 @@ export const Footer = () => {
   return (
     <footer className={Styles["footer"]}>
       <Link href="/"
-        className={Styles.logo}
+        className={Styles['logo']}
         Style={pathname === "/" ? "pointer-events: none" : ""} //
-        aria-disabled={pathname == "/"}
-        tabIndex={pathname == "/" ? -1 : undefined}
+        aria-disabled={pathname === "/"}
+        tabIndex={pathname === "/" ? -1 : undefined}
       >
         <span className={Styles["logo-name"]}>pindie</span>
         <span className={Styles["logo-copy"]}>, XXI век</span>
