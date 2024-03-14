@@ -1,9 +1,9 @@
 'use client'
-import { useEffect } from 'react';
-import { getGamesByCategory } from '@/app/data/data-utils.js'
-import { Banner } from '@/app/components/Banner/Banner.jsx';
-import { CardsList } from "@/app/components/CardsList/CardsList.jsx";
-import { Promo } from '@/app/components/Promo/Promo';
+import {useEffect} from 'react';
+import {getGamesByCategory} from '@/app/data/data-utils.js'
+import {Banner} from '@/app/components/Banner/Banner.jsx';
+import {CardsList} from "@/app/components/CardsList/CardsList.jsx";
+import {Promo} from '@/app/components/Promo/Promo';
 
 
 export default function Home() {
