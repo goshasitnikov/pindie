@@ -1,5 +1,5 @@
 'use client'
-import { CardsList } from '@/app/components/CardsList/CardsList'
+import { CardsListSection } from '@/app/components/CardsListSection/CardsListSection'
 import {endpoints} from "@/app/api/config";
 import {Preloader} from "@/app/components/Preloader/Preloader";
 import {useGetDataByCategory} from "@/app/api/api-hooks";
@@ -14,7 +14,7 @@ export default  function Shooter() {
     return (
         <main className={'main-inner'}>
             { shooterGames ? (
-            <CardsList id='shooter' title='Шутеры' data={shooterGames} />
+            <CardsListSection id='shooter' title='Шутеры' data={shooterGames} />
                  ) : (
                 <Preloader/>
             )}
