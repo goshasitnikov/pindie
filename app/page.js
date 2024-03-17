@@ -1,9 +1,9 @@
 'use client'
-import {useEffect} from 'react';
-import {getGamesByCategory} from '@/app/data/data-utils.js'
-import {Banner} from '@/app/components/Banner/Banner.jsx';
-import {CardsListSection} from "@/app/components/CardsListSection/CardsListSection.jsx";
-import {Promo} from '@/app/components/Promo/Promo';
+import { useEffect } from 'react';
+import { getGamesByCategory } from '@/app/data/data-utils.js'
+import { Banner } from '@/app/components/Banner/Banner.jsx';
+import { Promo } from '@/app/components/Promo/Promo';
+import { CardsListSection } from './components/CardsListSection/CardsListSection';
 
 
 export default function Home() {
@@ -30,8 +30,8 @@ export default function Home() {
   return (
     <main className="main">
       <Banner />
-      <CardsListSection id='popular' title='Популярные' data={popularGames} />
-      <CardsListSection id='new' title='Новинки' data={newGames} />
+      <CardsListSection type="slider" id='popular' title='Популярные' data={popularGames} />
+      <CardsListSection type="slider" id='new' title='Новинки' data={newGames} />
       <Promo />
     </main >
   );
