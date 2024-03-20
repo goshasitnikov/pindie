@@ -1,19 +1,19 @@
 'use client'
-import { useEffect } from 'react';
 import { Banner } from '@/app/components/Banner/Banner.jsx';
 import { Promo } from '@/app/components/Promo/Promo';
 import { CardsListSection } from './components/CardsListSection/CardsListSection';
 import { useGetDataByCategory } from '@/app/api/api-hooks'
 import { endpoints } from "@/app/api/config";
+import { Preloader } from './components/Preloader/Preloader';
 
 
 export default function Home() {
 
-  const popularGame = useGetDataByCategory(
+  const popularGames = useGetDataByCategory(
     endpoints.games,
     "popular"
   );
-  const newGame = useGetDataByCategory(
+  const newGames = useGetDataByCategory(
     endpoints.games,
     "new"
   );
@@ -21,8 +21,15 @@ export default function Home() {
   return (
     <main className="main">
       <Banner />
-      {popularGame && <CardsListSection id="popular" type="slider" title="Популярные" data={popularGame} />}
-      {newGame && <CardsListSection id="new" type="slider" title="Новинки" data={newGame} />}
+      {
+        (popularGames && newGames) ? (
+          <>
+            <CardsListSection id="popular" type="slider" title="Популярные" data={popularGames} />
+            <CardsListSection id="new" type="slider" title="Новинки" data={newGames} />
+          </>
+        )
+          : <Preloader />
+        }
       <Promo />
     </main>
   );
