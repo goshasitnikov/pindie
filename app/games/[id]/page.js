@@ -80,8 +80,10 @@ export default function GamePage(props) {
         }
     }
 
-    return (
-        game ? (
+
+return (
+    <main className="main">
+        { game ? (
             <>
                 <section className={Styles['game']}>
                     <iframe className={Styles['game__iframe']} src={game.link}></iframe>
@@ -111,6 +113,7 @@ export default function GamePage(props) {
             <Preloader />
         ) : (
             <GameNotFound />
-        )
-    )
+        )}
+    </main>
+)
 }
